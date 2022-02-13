@@ -63,19 +63,33 @@ public:
 };
 
 
+class Omnivoro : public Herviboro, public Carnivoro{
+public:
+    Omnivoro(): Herviboro(), Carnivoro() {
+
+    }
+};
+
+
 
 int main(){
     Animal *a = new Animal();
     Herviboro *h = new Herviboro();
     Carnivoro *c = new Carnivoro();
+    Omnivoro *o = new Omnivoro();
 
     cout << "Numero de Animales: "<<Animal::getNumero()<<endl;
     
     a->comer();
+
     h->pastar();
     h->comer();
+    
     c->cazar();
     c->comer();
+
+    o->Herviboro::comer();
+    o->Carnivoro::comer();
 
     delete a;
     cout << "Numero de Animales: "<<Animal::getNumero()<<endl;
