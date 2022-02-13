@@ -14,8 +14,8 @@ public:
     string getAlimento(){
         return alimento;
     };
-    void comer(){
-        cout<<"Este animal esta comiendo "<<alimento<<endl;
+    void comer(Animal *a){
+        cout<<"Este animal esta comiendo "<<a->alimento<<endl;
     };
 };
 
@@ -66,7 +66,6 @@ public:
 class Omnivoro : public Herviboro, public Carnivoro{
 public:
     Omnivoro(): Herviboro(), Carnivoro() {
-
     }
 };
 
@@ -80,16 +79,13 @@ int main(){
 
     cout << "Numero de Animales: "<<Animal::getNumero()<<endl;
     
-    a->comer();
+    a->comer(a);
 
     h->pastar();
-    h->comer();
+    a->comer(h);
     
     c->cazar();
-    c->comer();
-
-    o->Herviboro::comer();
-    o->Carnivoro::comer();
+    a->comer(c);
 
     delete a;
     cout << "Numero de Animales: "<<Animal::getNumero()<<endl;
